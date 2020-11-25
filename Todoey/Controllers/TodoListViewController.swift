@@ -56,6 +56,17 @@ class TodoListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, escape) in
+            self.context.delete(self.itemArray[indexPath.row])
+            self.itemArray.remove(at: indexPath.row)
+            self.saveItems()
+        }
+        let editButton = UISwipeActionsConfiguration(actions: [action])
+        
+        return editButton
+    }
+    
     //MARK - Add New Items
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
