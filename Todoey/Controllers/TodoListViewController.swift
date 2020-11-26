@@ -87,6 +87,8 @@ class TodoListViewController: UITableViewController {
         
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Create new item"
+            alertTextField.autocapitalizationType = .sentences
+            alertTextField.autocorrectionType = .yes
             textField = alertTextField
         }
         
@@ -102,7 +104,7 @@ class TodoListViewController: UITableViewController {
             print("Error encoding item array, \(error)")
         }
         
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
     func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest()) {
