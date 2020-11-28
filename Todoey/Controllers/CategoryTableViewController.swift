@@ -109,6 +109,7 @@ class CategoryTableViewController: SwipeTableViewController {
         let destinationVC = segue.destination as! TodoListViewController
         if let indexPath = tableView.indexPathForSelectedRow {
             destinationVC.selectedCategory = categories?[indexPath.row]
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
 }
